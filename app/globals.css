@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Alto total y overlay de grano para evitar banding */
+html, body { height: 100%; }
+
+:root { --grain-url: url("/images/tex/grain_tile.png"); }
+
+body::after {
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grain-url);
+  background-size: 512px 512px;
+  opacity: .03;
+}
