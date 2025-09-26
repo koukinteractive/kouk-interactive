@@ -74,15 +74,24 @@ export default function KoukLanding() {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1220]/60 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
           <Link href="/" aria-label="Inicio Kouk Interactive" className="group inline-flex items-center gap-3">
-            {/* Isotipo en vez de logo lockup */}
-            <Image
-              src="/images/logos/kouk_isotype.png"
-              alt="Kouk Interactive"
-              width={32}
-              height={32}
-              priority
-              className="h-8 w-auto select-none"
-            />
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logos/kouk_isotype.png"
+                alt="Kouk isotipo"
+                width={28}
+                height={28}
+                className="h-7 w-7"
+                priority
+              />
+              <Image
+                src="/images/logos/kouk_lockup.svg"
+                alt="Kouk Interactive"
+                width={120}
+                height={24}
+                className="h-5 md:h-6 lg:h-7 w-auto"
+                priority
+              />
+            </div>
           </Link>
           <nav className="hidden gap-6 text-sm text-white/80 md:flex">
             {/* anclas internas (hash) pueden seguir con <a> */}
@@ -143,14 +152,14 @@ export default function KoukLanding() {
               className="max-w-3xl text-center"
             >
               {/* Lockup completo debajo del título */}
-              <Image
+              {/* <Image
                 src="/images/logos/kouk_lockup.png"
                 alt="Kouk Interactive"
                 width={280}
                 height={80}
                 className="h-20 w-auto mx-auto mb-6"
                 priority
-              />
+              /> */}
               <h1 className="text-balance text-3xl font-semibold leading-tight md:text-5xl">
                 Apps simples que se sienten bien.
                 <span className="block text-white/80">Modernidad, practicidad y creación con propósito.</span>

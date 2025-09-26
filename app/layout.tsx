@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-// 👇 aquí va ahora el themeColor
+// 🎨 no choca con metadata: queda separado
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -50,7 +49,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="h-full">
-      <body className="min-h-svh bg-[#0b1220] text-white">{children}</body>
+      <body className="min-h-svh bg-[#0b1220] text-white">
+        {children}
+      </body>
     </html>
   );
 }
