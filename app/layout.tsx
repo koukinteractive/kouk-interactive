@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://koukinteractive.com"),
@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   manifest: "/site.webmanifest",
-  themeColor: "#0b1220",
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -40,6 +39,14 @@ export const metadata: Metadata = {
   },
 };
 
+// 👇 aquí va ahora el themeColor
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1220" },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="h-full">
@@ -47,3 +54,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
