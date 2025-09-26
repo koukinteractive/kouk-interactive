@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight, Github, Building2, Gamepad2, HeartPulse,
@@ -72,7 +73,7 @@ export default function KoukLanding() {
       {/* Header con isotipo de compañía */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1220]/60 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-          <a href="/" aria-label="Inicio Kouk Interactive" className="group inline-flex items-center gap-3">
+          <Link href="/" aria-label="Inicio Kouk Interactive" className="group inline-flex items-center gap-3">
             {/* Isotipo en vez de logo lockup */}
             <Image
               src="/images/logos/kouk_isotype.png"
@@ -82,8 +83,9 @@ export default function KoukLanding() {
               priority
               className="h-8 w-auto select-none"
             />
-          </a>
+          </Link>
           <nav className="hidden gap-6 text-sm text-white/80 md:flex">
+            {/* anclas internas (hash) pueden seguir con <a> */}
             <a className="hover:text-white" href="#divisions">Divisiones</a>
             <a className="hover:text-white" href="#projects">Proyectos</a>
             <a className="hover:text-white" href="#principles">Principios</a>
@@ -104,40 +106,29 @@ export default function KoukLanding() {
         </div>
       </header>
 
-      {/* Hero (1×/2× manual con <picture>) */}
+      {/* Hero */}
       <section className="relative">
         {/* Fondo hero (debajo, z-0) */}
         <div className="absolute inset-0 z-0">
-
-          {/* Desktop / Tablet */}
-          <picture aria-hidden="true">
-            {/* Si más adelante generas AVIF, añade aquí un <source type="image/avif"> */}
-            <source
-              media="(min-width: 768px)"
-              srcSet="/images/hero/hero-3200.webp 1x, /images/hero/hero-4800.webp 2x"
-              type="image/webp"
-            />
-            {/* Fallback desktop */}
-            <img
-              src="/images/hero/hero-3200.webp"
-              alt=""
-              className="hidden md:block w-full h-full object-cover object-center opacity-95 select-none"
-              loading="eager"
-              decoding="sync"
-              draggable={false}
-            />
-          </picture>
-
-          {/* Móvil */}
-          <img
-            src="/images/hero/hero_mobile.webp"
+          {/* Imagen de fondo optimizada con next/image */}
+          <Image
+            src="/images/hero/hero-3200.webp"
             alt=""
-            className="md:hidden w-full h-full object-cover object-center opacity-95 select-none"
-            loading="eager"
-            decoding="sync"
+            fill
+            priority
+            sizes="100vw"
+            className="hidden md:block w-full h-full object-cover object-center opacity-95 select-none"
             draggable={false}
           />
-
+          <Image
+            src="/images/hero/hero_mobile.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="md:hidden w-full h-full object-cover object-center opacity-95 select-none"
+            draggable={false}
+          />
           {/* Degradado de respaldo */}
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-sky-400/5 to-fuchsia-400/5" />
         </div>
@@ -183,9 +174,11 @@ export default function KoukLanding() {
 
         {/* --- FADES para transiciones suaves --- */}
         {/* Vignette lateral sutil */}
-        <div className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-30
+        <div
+          className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-30
           bg-[radial-gradient(1200px_60%_at_-10%_50%,rgba(0,0,0,.35),transparent_60%),
-              radial-gradient(1200px_60%_at_110%_50%,rgba(0,0,0,.35),transparent_60%)]" />
+              radial-gradient(1200px_60%_at_110%_50%,rgba(0,0,0,.35),transparent_60%)]"
+        />
 
         {/* Fade desde el header hacia el hero */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#0b1220] to-transparent" />
@@ -200,7 +193,7 @@ export default function KoukLanding() {
       {/* Divisiones con key art + logo de división + FONDO */}
       <section id="divisions" className="relative overflow-hidden">
         {/* Fondo ambiental */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="pointer-events-none absolute inset-0 -z-10">
           {/* Halo cian arriba-izquierda */}
           <div className="absolute -top-40 -left-40 h-[60vmax] w-[60vmax] rounded-full
                           bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.12),_transparent_60%)]
@@ -219,9 +212,9 @@ export default function KoukLanding() {
         <div className="mx-auto max-w-6xl px-4 py-12">
           <div className="mb-6 flex items-end justify-between">
             <h2 className="text-2xl font-semibold md:text-3xl">Divisiones</h2>
-            <a href="/divisions" className="text-sm text-white/70 hover:text-white inline-flex items-center">
+            <Link href="/divisions" className="text-sm text-white/70 hover:text-white inline-flex items-center">
               Ver todas <ChevronRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3 items-stretch">
@@ -234,7 +227,7 @@ export default function KoukLanding() {
                 transition={{ duration: 0.6 }}
                 className="h-full"
               >
-                <a href={d.href} className="block h-full">
+                <Link href={d.href} className="block h-full">
                   <Card className="group relative h-full min-h-[320px] md:min-h-[360px] flex flex-col overflow-hidden border-white/10 bg-white/5 backdrop-blur">
                     {/* background image */}
                     <div className="absolute inset-0 -z-10">
@@ -283,7 +276,7 @@ export default function KoukLanding() {
                       </div>
                     </CardContent>
                   </Card>
-                </a>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -306,13 +299,13 @@ export default function KoukLanding() {
         <div className="mx-auto max-w-6xl px-4 py-12">
           <div className="mb-6 flex items-end justify-between">
             <h2 className="text-2xl font-semibold md:text-3xl">Políticas y estándares</h2>
-            <a href="/policies" className="text-sm text-white/80 hover:text-white inline-flex items-center">
+            <Link href="/policies" className="text-sm text-white/80 hover:text-white inline-flex items-center">
               Ver todas <ChevronRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {policies.map((p) => (
-              <a
+              <Link
                 key={p.href}
                 href={p.href}
                 className="rounded-2xl border border-white/10 bg-black/30 p-4 text-white/80 hover:bg-black/40"
@@ -321,7 +314,7 @@ export default function KoukLanding() {
                   <span>{p.label}</span>
                   <ExternalLink className="h-4 w-4" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -329,3 +322,4 @@ export default function KoukLanding() {
     </main>
   );
 }
+
