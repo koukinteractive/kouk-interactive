@@ -161,11 +161,12 @@ export default function KoukLanding() {
                 priority
               /> */}
               <h1 className="text-balance text-3xl font-semibold leading-tight md:text-5xl">
-                Apps simples que se sienten bien.
-                <span className="block text-white/80">Modernidad, practicidad y creación con propósito.</span>
+                Apps con sentido.
+                <span className="block text-white/80">No nacen para ser las mejores,</span>
+                <span className="block text-white/80">nacen para aportar.</span>
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-white/80">
-                Somos una casa creativa de software enfocada en utilidades, mini-juegos y bienestar. Sin burocracia innecesaria: llevamos ideas a hechos concretos que aportan a la sociedad y a las futuras generaciones.
+                Somos una casa creativa de software enfocada en utilidades, mini-juegos y bienestar. Compartimos los dilemas del mundo y buscamos resolverlos con tecnología que se siente humana.
               </p>
               <div className="mt-6 flex items-center justify-center gap-3">
                 <Button asChild size="lg" className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:opacity-90">
