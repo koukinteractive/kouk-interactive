@@ -1,9 +1,21 @@
 @import "tailwindcss";
 
 /* Alto total y overlay de grano para evitar banding */
-html, body { height: 100%; }
+html, body { 
+  height: 100%; 
+}
 
-:root { --grain-url: url("/images/tex/grain_tile.png"); }
+/* Tipografías (desde next/font → layout.tsx) */
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, Arial;
+  --font-display: var(--font-display), var(--font-sans);
+  --tracking-tightest: -0.035em;
+}
+
+/* Overlay de grano */
+:root { 
+  --grain-url: url("/images/tex/grain_tile.png"); 
+}
 
 body::after {
   content:"";
@@ -13,4 +25,10 @@ body::after {
   background-image: var(--grain-url);
   background-size: 512px 512px;
   opacity: .03;
+}
+
+/* Suavizado de fuentes */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

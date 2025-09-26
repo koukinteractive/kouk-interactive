@@ -1,5 +1,22 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
+import SiteHeader from "../components/SiteHeader";
+
+import { Sora, Inter } from "next/font/google";
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://koukinteractive.com"),
@@ -38,7 +55,6 @@ export const metadata: Metadata = {
   },
 };
 
-// 🎨 no choca con metadata: queda separado
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -48,11 +64,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="h-full">
-      <body className="min-h-svh bg-[#0b1220] text-white">
+    <html
+      lang="es"
+      className={`h-full ${inter.variable} ${sora.variable} font-sans`}
+    >
+      <body className="h-full min-h-svh bg-[#0b1220] text-white">
+        <SiteHeader />
         {children}
       </body>
     </html>
   );
 }
-
