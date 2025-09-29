@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import { Sora, Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -14,6 +15,12 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const expressway = localFont({
+  src: "../../public/fonts/expressway rg.otf",
+  variable: "--font-expressway",
   display: "swap",
 });
 
@@ -65,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="es"
-      className={`h-full ${inter.variable} ${sora.variable} font-sans`}
+      className={`h-full ${inter.variable} ${sora.variable} ${expressway.variable} font-sans`}
     >
       <body className="h-full min-h-svh bg-[#0b1220] text-white">
         <SiteHeader />

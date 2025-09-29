@@ -186,42 +186,6 @@ export default function KoukLanding() {
         </div>
       </section>
 
-      {/* Principios — banner ancho con blur */}
-      <section id="principios-intro" className="relative mx-auto max-w-6xl px-4 py-10">
-        <div className="relative h-[320px] md:h-[420px] w-full overflow-hidden rounded-2xl border border-white/10">
-          {/* Imagen de fondo (ligero blur) */}
-          <Image
-            src="/images/principios/kouk_team_banner.webp" // <-- tu imagen 16:9
-            alt="Equipo de Kouk Interactive colaborando"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover scale-[1.05] blur-[2px] md:blur-[3px] brightness-90"
-          />
-
-          {/* Overlays sutiles con la paleta KOUK */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0b1220]/70 via-[#0b1220]/35 to-[#0b1220]/70" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_10%_50%,rgba(34,211,238,.18),transparent),radial-gradient(40%_120%_at_90%_50%,rgba(217,70,239,.14),transparent)]" />
-
-          {/* Contenido */}
-          <div className="absolute inset-0 grid place-items-center px-6">
-            <div className="max-w-2xl rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md p-6 shadow-[0_10px_40px_rgba(0,0,0,.35)]">
-              <h2 className="text-2xl md:text-3xl font-semibold">Nuestros Principios</h2>
-              <p className="mt-2 text-white/85 leading-relaxed">
-                Creamos con propósito: tecnología que se siente humana. Igualdad, trabajo en equipo
-                y aprendizaje continuo. Menos burocracia, más movimiento y resultados que aportan.
-              </p>
-              <Link
-                href="/principios"
-                className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-white hover:bg-white/15"
-              >
-                Conocer más <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Políticas */}
       <section id="policies" className="relative">
         <div className="absolute inset-0 -z-10">
