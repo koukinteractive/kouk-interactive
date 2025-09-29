@@ -16,7 +16,9 @@ export type TriptychItem = {
   eyebrow?: string;
 };
 
-export default function SplitTriptych({ items }: { items: TriptychItem[] }) {
+export default function SplitTriptych(
+  { items, showTags = false }: { items: TriptychItem[]; showTags?: boolean }
+) {
   const [active, setActive] = React.useState<string | null>(null);
 
   // Detección táctil segura (SSR-friendly)
@@ -67,7 +69,7 @@ export default function SplitTriptych({ items }: { items: TriptychItem[] }) {
 
               {/* Contenido */}
               <div className="relative z-10 flex w-full flex-col justify-end gap-4 p-6 sm:p-8">
-                {item.tag && (
+                {showTags && item.tag && (
                   <span className="text-xs uppercase tracking-widest text-white/70">{item.tag}</span>
                 )}
                 <div>
