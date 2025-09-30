@@ -107,7 +107,7 @@ export default function PageProyecto() {
             <strong> aportar utilidad inmediata</strong> en la vida diaria, sin ruido ni distracciones.
           </p>
           <blockquote className="mt-6 border-l-4 border-white/20 pl-4 italic text-white/70 text-lg">
-            "No nacemos para competir por un podio, nacemos para aportar."
+            &ldquo;No nacemos para competir por un podio, nacemos para aportar.&rdquo;
           </blockquote>
         </div>
         <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg">
@@ -200,5 +200,6 @@ export default function PageProyecto() {
     </main>
   );
 }
+
 
 
