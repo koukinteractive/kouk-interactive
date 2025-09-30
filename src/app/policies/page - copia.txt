@@ -18,7 +18,7 @@ const Sec = ({ id, title, children }: { id: string; title: string; children: Rea
 );
 
 export default function PoliciesPage() {
-  const updated = "2025-09-30";
+  const updated = "2025-09-29";
 
   return (
     <main className="min-h-[100svh] w-full bg-[#0b1220] text-white">
@@ -44,11 +44,6 @@ export default function PoliciesPage() {
               <li><a href="#terms" className="hover:text-white">2. Términos y Condiciones</a></li>
               <li><a href="#security" className="hover:text-white">3. Datos y Seguridad</a></li>
               <li><a href="#a11y" className="hover:text-white">4. Accesibilidad</a></li>
-              <li><a href="#controller" className="hover:text-white">5. Responsable y contacto legal</a></li>
-              <li><a href="#rights" className="hover:text-white">6. Derechos del usuario</a></li>
-              <li><a href="#children" className="hover:text-white">7. Menores de edad</a></li>
-              <li><a href="#retention" className="hover:text-white">8. Retención y eliminación</a></li>
-              <li><a href="#changes" className="hover:text-white">9. Vigencia y cambios</a></li>
 
               <li className="mt-4 font-semibold text-white/90">Políticas por App</li>
               <li><a href="#apps-utility" className="hover:text-white">Utility (Calculadora de Descuentos, etc.)</a></li>
@@ -77,12 +72,6 @@ export default function PoliciesPage() {
             <p>
               Puedes controlar la personalización de anuncios en los ajustes de tu dispositivo.
               Contacto: <a href="mailto:contacto@koukinteractive.com">contacto@koukinteractive.com</a>.
-            </p>
-            <p className="text-white/70 text-sm">
-              Políticas de terceros relevantes:{" "}
-              <a className="underline" href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google</a>{" "}
-              y{" "}
-              <a className="underline" href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noreferrer">AdMob</a>.
             </p>
           </Sec>
 
@@ -126,52 +115,6 @@ export default function PoliciesPage() {
             </ul>
             <p className="text-white/70 text-sm mt-2">
               Detecciones o sugerencias: <a href="mailto:contacto@koukinteractive.com">contacto@koukinteractive.com</a>.
-            </p>
-          </Sec>
-
-          <Sec id="controller" title="5) Responsable y contacto legal">
-            <p>
-              Responsable del tratamiento (cuando corresponda): <strong>Kouk Interactive</strong>.
-              Consultas legales y privacidad:{" "}
-              <a href="mailto:legal@koukinteractive.com">legal@koukinteractive.com</a>.
-            </p>
-            <p className="text-white/70 text-sm">
-              Nota: muchas de nuestras utilidades funcionan totalmente en el dispositivo y no
-              envían información a servidores propios de Kouk.
-            </p>
-          </Sec>
-
-          <Sec id="rights" title="6) Derechos del usuario">
-            <p>
-              Puedes ejercer tus derechos de acceso, rectificación, eliminación, oposición y
-              limitación del tratamiento escribiendo a{" "}
-              <a href="mailto:privacy@koukinteractive.com">privacy@koukinteractive.com</a>. Si tu
-              solicitud depende de un tercero (p. ej., AdMob), te orientaremos para gestionarla con
-              ese proveedor.
-            </p>
-          </Sec>
-
-          <Sec id="children" title="7) Menores de edad">
-            <p>
-              Salvo indicación expresa, nuestras apps no están dirigidas a niños. Cuando una app se
-              dirija a audiencias infantiles, adaptaremos el tratamiento de datos y la publicidad a las
-              políticas aplicables (por ejemplo, anuncios no personalizados).
-            </p>
-          </Sec>
-
-          <Sec id="retention" title="8) Retención y eliminación de datos">
-            <p>
-              No conservamos datos personales en servidores de Kouk para las utilidades descritas.
-              Cuando se utilicen servicios de terceros, estos aplicarán sus propios criterios de
-              retención; ver “Políticas de terceros” en la sección de Privacidad.
-            </p>
-          </Sec>
-
-          <Sec id="changes" title="9) Vigencia y cambios">
-            <p>
-              Podemos actualizar estas políticas para reflejar cambios normativos o funcionales.
-              Publicaremos la nueva versión en esta misma URL e indicaremos la fecha de actualización.
-              El uso continuado de nuestras apps tras los cambios implica su aceptación.
             </p>
           </Sec>
 
