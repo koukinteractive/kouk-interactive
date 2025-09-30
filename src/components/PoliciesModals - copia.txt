@@ -7,8 +7,6 @@ import { X } from "lucide-react";
 
 type Key = "privacy" | "terms" | "security" | "a11y";
 
-const KEYS: Key[] = ["privacy", "terms", "a11y", "security"];
-
 const MODALS: Record<Key, { title: string; body: React.ReactNode }> = {
   privacy: {
     title: "Política de Privacidad",
@@ -39,7 +37,7 @@ const MODALS: Record<Key, { title: string; body: React.ReactNode }> = {
     body: (
       <>
         <p>
-          Las apps y servicios de Kouk Interactive se ofrecen tal cual (&ldquo;as is&rdquo;), sin garantía de
+          Las apps y servicios de Kouk Interactive se ofrecen tal cual (“as is”), sin garantía de
           resultados específicos. Son para uso personal y <strong>no sustituyen asesoría profesional</strong>.
         </p>
         <ul className="list-disc pl-5 space-y-2 mt-2">
@@ -93,28 +91,13 @@ export default function PoliciesModals() {
 
   const open = useCallback((key: Key) => {
     setOpenKey(key);
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "hidden";
-    }
+    document.body.style.overflow = "hidden";
   }, []);
 
   const close = useCallback(() => {
     setOpenKey(null);
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "";
-    }
-    if (typeof history !== "undefined" && typeof location !== "undefined") {
-      history.replaceState(null, "", location.pathname + location.search);
-    }
-  }, []);
-
-  // Limpieza de overflow si el componente se desmonta con el modal abierto
-  useEffect(() => {
-    return () => {
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "";
-      }
-    };
+    document.body.style.overflow = "";
+    history.replaceState(null, "", location.pathname + location.search);
   }, []);
 
   // 1) Deep-link al cargar + responder a cambios de hash
@@ -122,7 +105,9 @@ export default function PoliciesModals() {
     const handleHash = () => {
       const raw = (location.hash || "").replace("#", "");
       const key = raw as Key;
-      if (KEYS.includes(key)) open(key);
+      if (["privacy", "terms", "a11y", "security"].includes(key)) {
+        open(key);
+      }
     };
     handleHash(); // al montar
     window.addEventListener("hashchange", handleHash);
@@ -146,15 +131,15 @@ export default function PoliciesModals() {
       // Extrae el hash de forma robusta (soporta href="#x" y href="/#x")
       let hash = "";
       try {
-        const href = anchor.getAttribute("href");
-        if (!href) return;
-        const url = new URL(href, location.href);
+        // Si es relativo, crea una URL absoluta temporal
+        const url = new URL(anchor.getAttribute("href")!, location.href);
         hash = (url.hash || "").replace("#", "");
       } catch {
+        // Fallback para valores raros
         hash = (anchor.getAttribute("href") || "").split("#")[1] || "";
       }
 
-      if (KEYS.includes(hash as Key)) {
+      if (["privacy", "terms", "a11y", "security"].includes(hash as Key)) {
         e.preventDefault();
         history.replaceState(null, "", `#${hash}`);
         open(hash as Key);
@@ -246,7 +231,7 @@ export default function PoliciesModals() {
         <section id="terms">
           <h2>Términos y Condiciones</h2>
           <p>
-            Las apps y servicios de Kouk Interactive se ofrecen tal cual (&quot;as is&quot;), sin garantía de
+            Las apps y servicios de Kouk Interactive se ofrecen tal cual ("as is"), sin garantía de
             resultados específicos. Son para uso personal y no sustituyen asesoría profesional.
           </p>
           <p>Contacto: contacto@koukinteractive.com</p>
@@ -272,6 +257,5 @@ export default function PoliciesModals() {
     </>
   );
 }
-
 
 

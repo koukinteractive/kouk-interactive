@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 export type DivisionRowProps = {
-  tag: string;
+  tag?: string;
   name: string;
   desc: string;
   bullets: string[];
@@ -58,10 +58,13 @@ export default function DivisionRow({
                 quality={90}
                 className="lg:hidden object-cover select-none transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 draggable={false}
-            />
+              />
             )}
             {/* Vignette sutil para dar profundidad sin oscurecer demasiado */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"
+              aria-hidden="true"
+            />
           </div>
         </div>
 
@@ -71,7 +74,7 @@ export default function DivisionRow({
             {logo ? (
               <Image src={logo} alt={`${name} logo`} width={52} height={18} />
             ) : null}
-            <span className="text-sm text-gray-500">{tag}</span>
+            {tag ? <span className="text-sm text-gray-500">{tag}</span> : null}
           </div>
 
           <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight">
