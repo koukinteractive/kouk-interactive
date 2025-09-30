@@ -21,7 +21,7 @@ export default function SplitTriptych(
 ) {
   const [active, setActive] = React.useState<string | null>(null);
 
-  // Detección táctil segura (SSR-friendly)
+  // Detección táctil (SSR-friendly)
   const [isTouch, setIsTouch] = React.useState(false);
   React.useEffect(() => {
     if (typeof window !== "undefined" && window.matchMedia) {
@@ -68,10 +68,11 @@ export default function SplitTriptych(
               </div>
 
               {/* Contenido */}
-              <div className="relative z-10 flex w-full flex-col justify-end gap-4 p-6 sm:p-8">
+              <div className="relative z-10 flex w-full flex-col justify-end gap-3 p-6 sm:p-8">
                 {showTags && item.tag && (
                   <span className="text-xs uppercase tracking-widest text-white/70">{item.tag}</span>
                 )}
+
                 <div>
                   {item.eyebrow && (
                     <div className="mb-1 text-sm text-white/80">{item.eyebrow}</div>
@@ -81,23 +82,26 @@ export default function SplitTriptych(
                   </h3>
                 </div>
 
-                {item.bullets?.length ? (
-                  <motion.ul
-                    initial={false}
-                    animate={{ opacity: active ? (expanded ? 1 : 0) : 0.7, y: expanded ? 0 : 6 }}
-                    transition={{ duration: 0.25 }}
-                    className="space-y-1.5 text-sm text-white/85"
-                  >
-                    {item.bullets.map((b, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/80" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </motion.ul>
-                ) : null}
+                {/* Zona reservada para bullets: no empuja el título ni se solapa */}
+                <div className="min-h-[72px] sm:min-h-[84px] md:min-h-[96px]">
+                  {item.bullets?.length ? (
+                    <motion.ul
+                      initial={false}
+                      animate={{ opacity: expanded ? 1 : 0, y: expanded ? 0 : 6 }}
+                      transition={{ duration: 0.25 }}
+                      className="space-y-1.5 text-sm text-white/85 pointer-events-none"
+                    >
+                      {item.bullets.map((b, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white/80" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  ) : null}
+                </div>
 
-                <div className="mt-2 flex items-center gap-3">
+                <div className="mt-1 flex items-center gap-3">
                   <Link
                     href={item.href}
                     className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur transition hover:bg-white/15 hover:border-white/30"
@@ -119,3 +123,4 @@ export default function SplitTriptych(
     </section>
   );
 }
+

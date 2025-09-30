@@ -5,15 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Building2, Gamepad2, HeartPulse,
-  ExternalLink, ChevronRight
+  ArrowRight,
+  Building2,
+  Gamepad2,
+  HeartPulse,
+  ExternalLink,
+  ChevronRight,
+  Lightbulb,
+  Compass,
+  Hammer,
+  Rocket,
+  Users,
+  Heart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SplitTriptych, { TriptychItem } from "@/components/SplitTriptych";
 import dynamic from "next/dynamic";
 
 const PoliciesModals = dynamic(
-  () => import("@/components/PoliciesModals").then(m => m.default),
+  () => import("@/components/PoliciesModals").then((m) => m.default),
   { ssr: false }
 );
 
@@ -41,7 +51,11 @@ const divisions: Division[] = [
     art: "/images/divisions/utility_banner.webp",
     bannerMobile: "/images/divisions/utility_banner_mobile.webp",
     logo: "/images/logos/logo_koukutility.png",
-    highlights: ["Calculadora de Descuentos", "Horas Laborales", "Conversores y herramientas rápidas"],
+    highlights: [
+      "Calculadora de Descuentos",
+      "Horas Laborales",
+      "Conversores y herramientas rápidas",
+    ],
   },
   {
     key: "play",
@@ -65,7 +79,11 @@ const divisions: Division[] = [
     art: "/images/divisions/care_banner.webp",
     bannerMobile: "/images/divisions/care_banner_mobile.webp",
     logo: "/images/logos/logo_koukcare.png",
-    highlights: ["Guías de primeros pasos", "Rutinas de bienestar", "Alertas y acompañamiento"],
+    highlights: [
+      "Guías de primeros pasos",
+      "Rutinas de bienestar",
+      "Alertas y acompañamiento",
+    ],
   },
 ];
 
@@ -85,8 +103,42 @@ export default function KoukLanding() {
     href: d.href,
     image: d.art,
     bullets: d.highlights,
-    eyebrow: d.key === "utility" ? "Utilidades" : d.key === "play" ? "Juegos" : "Bienestar",
+    eyebrow:
+      d.key === "utility" ? "Utilidades" : d.key === "play" ? "Juegos" : "Bienestar",
   }));
+
+  const PRINCIPIOS = [
+    {
+      icon: <Lightbulb className="h-6 w-6" aria-hidden />,
+      title: "Simplicidad que se siente bien",
+      desc: "Diseñamos utilidades, mini-juegos y apps de bienestar que se entienden al primer toque. Menos ruido, más claridad.",
+    },
+    {
+      icon: <Compass className="h-6 w-6" aria-hidden />,
+      title: "Propósito antes que ego",
+      desc: "No somos grandilocuentes. Construimos con sentido de aporte: resolver dilemas reales y dejar algo mejor para las próximas generaciones.",
+    },
+    {
+      icon: <Hammer className="h-6 w-6" aria-hidden />,
+      title: "Menos burocracia, más hacer",
+      desc: "Preferimos prototipos funcionando a presentaciones eternas. Llevamos ideas a hechos concretos.",
+    },
+    {
+      icon: <Rocket className="h-6 w-6" aria-hidden />,
+      title: "Perfección como guía, no como freno",
+      desc: "Nos inspira la excelencia, pero entendemos que fallar es parte del crecimiento: como un músculo que llega al fallo para hacerse más fuerte.",
+    },
+    {
+      icon: <Users className="h-6 w-6" aria-hidden />,
+      title: "Cultura que fomenta crear",
+      desc: "Apoyamos la iniciativa de nuestro equipo. Compartimos conocimiento, celebramos los intentos y aprendemos juntos.",
+    },
+    {
+      icon: <Heart className="h-6 w-6" aria-hidden />,
+      title: "Cuidado por la experiencia",
+      desc: "Cada detalle importa: desde el onboarding hasta el último micro-feedback. Queremos que usar Kouk se sienta bien.",
+    },
+  ];
 
   return (
     <main className="min-h-[100svh] w-full bg-[#0b1220] text-white selection:bg-cyan-400/30 selection:text-white">
@@ -126,47 +178,45 @@ export default function KoukLanding() {
             >
               <h1 className="text-balance text-3xl font-semibold leading-tight md:text-5xl">
                 Apps con sentido.
-                <span className="block text-white/80">Nuestras apps no surgen para ganar trofeos,</span>
+                <span className="block text-white/80">
+                  Nuestras apps no surgen para ganar trofeos,
+                </span>
                 <span className="block text-white/80">surgen para aportar.</span>
               </h1>
               <p className="subtitle mx-auto mt-4 max-w-2xl text-white/80">
-                Somos una casa creativa de software enfocada en utilidades, mini-juegos y bienestar. Abrazamos los dilemas del mundo y los resolvemos con tecnología que se siente humana..
+                Somos una casa creativa de software enfocada en utilidades,
+                mini-juegos y bienestar. Abrazamos los dilemas del mundo y los
+                resolvemos con tecnología que se siente humana..
               </p>
               <div className="mt-6 flex items-center justify-center gap-3">
-                <Button asChild size="lg" className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:opacity-90">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:opacity-90"
+                >
                   <a href="#divisions">
                     Conocer divisiones <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="secondary" className="bg-white/10 hover:bg-white/15 text-white border border-white/10">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white/10 hover:bg-white/15 text-white border border-white/10"
+                >
                   <Link href="/principios">Nuestros principios</Link>
                 </Button>
               </div>
             </motion.div>
           </div>
         </div>
-
-        {/* Fades */}
-        <div
-          className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-30
-          bg-[radial-gradient(1200px_60%_at_-10%_50%,rgba(0,0,0,.35),transparent_60%),
-              radial-gradient(1200px_60%_at_110%_50%,rgba(0,0,0,.35),transparent_60%)]"
-        />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#0b1220] to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-[#0b1220]/40 to-[#0b1220]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </section>
 
       {/* Divisiones */}
       <section id="divisions" className="relative overflow-hidden">
-        {/* Fondo ambiental */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-40 -left-40 h-[60vmax] w-[60vmax] rounded-full
-                          bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.12),_transparent_60%)]
-                          blur-2xl" />
-          <div className="absolute -bottom-40 -right-40 h-[60vmax] w-[60vmax] rounded-full
-                          bg-[radial-gradient(ellipse_at_center,_rgba(168,85,247,0.10),_transparent_60%)]
-                          blur-2xl" />
+          <div className="absolute -top-40 -left-40 h-[60vmax] w-[60vmax] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.12),_transparent_60%)] blur-2xl" />
+          <div className="absolute -bottom-40 -right-40 h-[60vmax] w-[60vmax] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(168,85,247,0.10),_transparent_60%)] blur-2xl" />
           <div
             className="absolute inset-0 opacity-[0.12] mix-blend-overlay"
             style={{ backgroundImage: "url(/images/tex/grain_tile.png)" }}
@@ -176,49 +226,50 @@ export default function KoukLanding() {
         <div className="mx-auto max-w-6xl px-4 py-12">
           <div className="mb-6 flex items-end justify-between">
             <h2 className="text-2xl font-semibold md:text-3xl">Divisiones</h2>
-            <Link href="/divisions" className="text-sm text-white/70 hover:text-white inline-flex items-center">
+            <Link
+              href="/divisions"
+              className="text-sm text-white/70 hover:text-white inline-flex items-center"
+            >
               Ver todas <ChevronRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
 
-          {/* Split en 3 paneles */}
           <SplitTriptych items={splitItems} />
         </div>
       </section>
 
-      {/* Principios — banner ancho con blur */}
-      <section id="principios-intro" className="relative mx-auto max-w-6xl px-4 py-10">
-        <div className="relative h-[320px] md:h-[420px] w-full overflow-hidden rounded-2xl border border-white/10">
-          {/* Imagen de fondo (ligero blur) */}
-          <Image
-            src="/images/principios/kouk_team_banner.webp" // <-- tu imagen 16:9
-            alt="Equipo de Kouk Interactive colaborando"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover scale-[1.05] blur-[2px] md:blur-[3px] brightness-90"
-          />
+      {/* Principios — estilo tarjetas */}
+      <section id="principios-intro" className="mx-auto max-w-6xl px-6 py-14">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-2xl font-semibold md:text-3xl">Nuestros Principios</h2>
+          <Link
+            href="/principios"
+            className="text-sm text-white/70 hover:text-white inline-flex items-center"
+          >
+            Ver todos <ChevronRight className="ml-1 h-4 w-4" />
+          </Link>
+        </div>
 
-          {/* Overlays sutiles con la paleta KOUK */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0b1220]/70 via-[#0b1220]/35 to-[#0b1220]/70" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_10%_50%,rgba(34,211,238,.18),transparent),radial-gradient(40%_120%_at_90%_50%,rgba(217,70,239,.14),transparent)]" />
-
-          {/* Contenido */}
-          <div className="absolute inset-0 grid place-items-center px-6">
-            <div className="max-w-2xl rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md p-6 shadow-[0_10px_40px_rgba(0,0,0,.35)]">
-              <h2 className="text-2xl md:text-3xl font-semibold">Nuestros Principios</h2>
-              <p className="mt-2 text-white/85 leading-relaxed">
-                Creamos con propósito: tecnología que se siente humana. Igualdad, trabajo en equipo
-                y aprendizaje continuo. Menos burocracia, más movimiento y resultados que aportan.
-              </p>
-              <Link
-                href="/principios"
-                className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-white hover:bg-white/15"
-              >
-                Conocer más <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {PRINCIPIOS.map((p, i) => (
+            <motion.article
+              key={p.title}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset]
+                         transition-colors duration-500 ease-out hover:bg-white/10 hover:border-cyan-400/30"
+            >
+              <div className="flex items-center gap-3">
+                <div className="rounded-xl border border-white/10 p-2 transition-colors duration-500 ease-out group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10">
+                  {p.icon}
+                </div>
+                <h3 className="text-lg font-semibold">{p.title}</h3>
+              </div>
+              <p className="mt-3 text-white/70">{p.desc}</p>
+            </motion.article>
+          ))}
         </div>
       </section>
 
@@ -238,7 +289,10 @@ export default function KoukLanding() {
         <div className="mx-auto max-w-6xl px-4 py-12">
           <div className="mb-6 flex items-end justify-between">
             <h2 className="text-2xl font-semibold md:text-3xl">Políticas y estándares</h2>
-            <Link href="/policies" className="text-sm text-white/80 hover:text-white inline-flex items-center">
+            <Link
+              href="/policies"
+              className="text-sm text-white/80 hover:text-white inline-flex items-center"
+            >
               Ver todas <ChevronRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
@@ -263,4 +317,5 @@ export default function KoukLanding() {
     </main>
   );
 }
+
 

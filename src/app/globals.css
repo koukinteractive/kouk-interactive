@@ -7,6 +7,7 @@
   font-style: normal;
 }
 
+/* Solo se aplica a subtítulos */
 .subtitle {
   font-family: "Expressway", sans-serif;
 }
@@ -29,10 +30,7 @@ html, body {
   --font-expressway: "Expressway", sans-serif;
 }
 
-body {
-  font-family: var(--font-expressway);
-}
-
+/* Fondo de grano sutil */
 body::after {
   content:"";
   position: fixed;
@@ -48,3 +46,4 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
